@@ -1,0 +1,1 @@
+mysql -h $1 -u $2 -p$3 -D $4 -e "select host from hosts where host REGEXP '^[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}$'" | tr '\t' ',' | awk '{if(NR>1)print}' | awk '!/^$/' | grep -v "127.0.0.1"
